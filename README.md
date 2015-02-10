@@ -186,35 +186,35 @@ desenvolvimento. Começamos criando um Dynamic Web Project:
 
 ![Criando projeto](tutorial_primeiro_projeto/criando_projeto1.png)
 
-![Criando projeto](tutorial_primeiro_projeto/criando_projeto2)
+![Criando projeto](tutorial_primeiro_projeto/criando_projeto2.png)
 
 Neste passo é importante checar se o Tomcat esta selecionado e clicar para ir para o próximo, ao invés de finalizar, conforme 
 imagem abaixo:
 
-![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto3)
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto3.png)
 
 Nesta tela não há necessidade de modificar nada, apenas siga para a próxima.
 
-![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto4)
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto4.png)
 
 Nesta parte é importante marcar a opção de gerar o web.xml automaticamente, conforme imagem abaixo:
 
-![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto5)
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto5.png)
 
 Pronto, temos nosso primeiro projeto criado, porém o boxJS ainda não funcionará, precisamos fazer apenas mais uma configuração.
 
 Adicionaremos à pasta `lib`, que está dentro da pasta `WEB-INF`, que, por sua vez, está dentro da pasta `WebContent`, o jar do boxJS,
 do Tomcat e da api de servlet, conforme imagem abaixo:
 
-![Jars na pasta lib](tutorial_primeiro_projeto/criando_projeto6)
+![Jars na pasta lib](tutorial_primeiro_projeto/criando_projeto6.png)
 
 
 
 Feito isso, basta que adicionemos nosso novo projeto ao Tomcat, conforme as imagens abaixo:
 
-![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto7)
+![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto7.png)
 
-![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto8)
+![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto8.png)
 
 
 Pronto, nosso ambiente já está completamente pronto para funcionar o boxJS!
