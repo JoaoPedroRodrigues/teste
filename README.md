@@ -1,3 +1,5 @@
+<!-- baseado em: https://github.com/go-martini/martini -->
+
 # boxJS
 
 O boxJS é um container de execução JavaScript para servidores Web, 
@@ -8,7 +10,7 @@ ou seja, é uma plataforma Server-Side JavaScript(SSJS).
 
 
 Considerando que você já está com boxJS pronto para rodar (caso não esteja, siga para o [tutorial de configuração do ambiente
-de desenvolvimento](link que ensina a fazer)), já podemos criar nosso primeiro arquivo javascript que será executado pelo 
+de desenvolvimento](#configurando-o-ambiente-de-desenvolvimento)), já podemos criar nosso primeiro arquivo javascript que será executado pelo 
 servidor. Podemos chamá-lo de 'hello.js' e escreveremos apenas o seguinte código nele:
 
 ~~~ javascript
@@ -32,13 +34,46 @@ Agora que já temos tudo configurado, abra seu browser e acesse a seguinte URL `
 Pronto, já temos nossa primeira página fornecida via boxJS!
 
 
+## Configurando o ambiente de desenvolvimento
+
+
+Para começarmos a trabalhar com o boxJS precisamos, antes de mais nada, fazer algumas configurações no nosso ambiente de 
+desenvolvimento. Começamos criando um Dynamic Web Project:
+
+![Criando projeto](tutorial_primeiro_projeto/criando_projeto1.png)
+
+![Criando projeto](tutorial_primeiro_projeto/criando_projeto2.png)
+
+Neste passo é importante checar se o Tomcat esta selecionado e clicar para ir para o próximo, ao invés de finalizar, conforme 
+imagem abaixo:
+
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto3.png)
+
+Nesta tela não há necessidade de modificar nada, apenas siga para a próxima.
+
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto4.png)
+
+Nesta parte é importante marcar a opção de gerar o web.xml automaticamente, conforme imagem abaixo:
+
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto5.png)
+
+Pronto, temos nosso primeiro projeto criado, porém o boxJS ainda não funcionará, precisamos fazer apenas mais uma configuração.
+
+Adicionaremos à pasta `lib`, que está dentro da pasta `WEB-INF`, que, por sua vez, está dentro da pasta `WebContent`, o jar do boxJS,
+do Tomcat e da api de servlet, conforme imagem abaixo:
+
+![Jars na pasta lib](tutorial_primeiro_projeto/criando_projeto6.png)
 
 
 
+Feito isso, basta que adicionemos nosso novo projeto ao Tomcat, conforme as imagens abaixo:
+
+![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto7.png)
+
+![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto8.png)
 
 
-
-
+Pronto, nosso ambiente já está completamente pronto para funcionar o boxJS!
 
 
 ## Configurando o `config.js`
@@ -98,7 +133,7 @@ singleton="false" user="" pass="" uri="mongodb://localhost:27017/nome_do_banco"/
 Além das páginas html que estão na pasta `WebContent` que são fornecidas normalmente pelo Tomcat, já sabemos que é possivel
 fornecer páginas através de comandos Javascript desde que os arquivos com estes comandos estejam dentro da pasta `boxjs`. 
 Outra possibilidade que o boxJS traz é o uso de rotas, essas rotas podem ser definidas no arquivo `config.js`, do qual [já 
-falamos anteriormente](link para a parte do config.js), ou em um outro arquivo qualquer, desde que este seja adicionado como 
+falamos anteriormente](#configurando-o-config.js), ou em um outro arquivo qualquer, desde que este seja adicionado como 
 módulo no `config.js`. Consideramos o segundo modo o mais correto e é ele que pode ser encontrado no exemplo abaixo:
 
 Primeiro devemos criar nosso arquivo `config.js`, nele incluiremos apenas o nosso módulo `routes`:
@@ -167,54 +202,3 @@ Agora podemos acessar cada um desses métodos, respectivamente, com as seguintes
 
 
 ![UrlRotesBrowser](acessando-url-routes.png)
-
-
-
-
-
-
-
-
-
-
-
-## Configurando o ambiente de desenvolvimento
-
-
-Para começarmos a trabalhar com o boxJS precisamos, antes de mais nada, fazer algumas configurações no nosso ambiente de 
-desenvolvimento. Começamos criando um Dynamic Web Project:
-
-![Criando projeto](tutorial_primeiro_projeto/criando_projeto1.png)
-
-![Criando projeto](tutorial_primeiro_projeto/criando_projeto2.png)
-
-Neste passo é importante checar se o Tomcat esta selecionado e clicar para ir para o próximo, ao invés de finalizar, conforme 
-imagem abaixo:
-
-![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto3.png)
-
-Nesta tela não há necessidade de modificar nada, apenas siga para a próxima.
-
-![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto4.png)
-
-Nesta parte é importante marcar a opção de gerar o web.xml automaticamente, conforme imagem abaixo:
-
-![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto5.png)
-
-Pronto, temos nosso primeiro projeto criado, porém o boxJS ainda não funcionará, precisamos fazer apenas mais uma configuração.
-
-Adicionaremos à pasta `lib`, que está dentro da pasta `WEB-INF`, que, por sua vez, está dentro da pasta `WebContent`, o jar do boxJS,
-do Tomcat e da api de servlet, conforme imagem abaixo:
-
-![Jars na pasta lib](tutorial_primeiro_projeto/criando_projeto6.png)
-
-
-
-Feito isso, basta que adicionemos nosso novo projeto ao Tomcat, conforme as imagens abaixo:
-
-![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto7.png)
-
-![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto8.png)
-
-
-Pronto, nosso ambiente já está completamente pronto para funcionar o boxJS!
