@@ -10,8 +10,8 @@ ou seja, é uma plataforma Server-Side JavaScript(SSJS).
 ## Primeiros Passos
 
 
-Considerando que você já está com boxJS pronto para rodar [(caso não esteja, siga para o tutorial de configuração do ambiente
-de desenvolvimento)](link que ensina a fazer), já podemos criar nosso primeiro arquivo javascript que será executado pelo 
+Considerando que você já está com boxJS pronto para rodar (caso não esteja, siga para o [tutorial de configuração do ambiente
+de desenvolvimento](link que ensina a fazer)), já podemos criar nosso primeiro arquivo javascript que será executado pelo 
 servidor. Podemos chamá-lo de 'hello.js' e escreveremos apenas o seguinte código nele:
 
 ~~~ javascript
