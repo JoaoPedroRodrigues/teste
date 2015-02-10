@@ -1,15 +1,18 @@
+
+baseado em: https://github.com/go-martini/martini
+
 # boxJS
 
-boxJS é um container de execução JavaScript para servidores Web, 
-ou seja, é uma plataforma Server-side JavaScript(SSJS).
+O boxJS é um container de execução JavaScript para servidores Web, 
+ou seja, é uma plataforma Server-Side JavaScript(SSJS).
 
 
 ## Primeiros Passos
 
 
-Depois de [configurar seu ambiente de desenvolvimento](link que ensina a fazer),
-vamos criar nosso primeiro '.js' que será executado pelo servidor. Podemos chamá-lo de
-'hello.js'.
+Considerando que você já está com boxJS pronto para rodar [(caso não esteja, siga para o tutorial de configuração do ambiente
+de desenvolvimento)](link que ensina a fazer), já podemos criar nosso primeiro arquivo javascript que será executado pelo 
+servidor. Podemos chamá-lo de 'hello.js' e escreveremos apenas o seguinte código nele:
 
 ~~~ javascript
 
