@@ -27,7 +27,7 @@ imagem abaixo.
 
 Agora que já temos tudo configurado, abra seu browser e acesse a seguinte URL `localhost:8080/<nome_do_projeto>/boxjs/hello.js`.
 
-(browser_com_primeira_pagina.png)
+![Browser](browser_com_primeira_pagina.png)
 
 Pronto, já temos nossa primeira página fornecida via boxJS!
 
@@ -110,7 +110,7 @@ var config = {
 
 ~~~
 
-(img-config-js-na-pasta)
+![Configjs](img-config-js-na-pasta.png)
 
 
 Agora podemos criar o arquivo `routes.js` que conterá nossas rotas:
@@ -124,7 +124,7 @@ Router.add( 'bye', 'actions/bye');
 
 ~~~
 
-(img-routes-js-na-pasta)
+![Routesjs](img-routes-js-na-pasta.png)
 
 Os argumentos da função add são, respectivamente, o Url pattern daquela rota e o arquivo JS que responderá às requisições que
 chegarem nela (o caminho deste arquivo é apartir da pasta `boxjs`).
@@ -160,12 +160,12 @@ exports = {
 
 ~~~
 
-(img-bye-e-hello-js-na-pasta)
+![Byeehello](img-bye-e-hello-js-na-pasta.png)
 
 Agora podemos acessar cada um desses métodos, respectivamente, com as seguintes URL:
 
 
-(acessando-url-routes)
+![UrlRotesBrowser](acessando-url-routes.png)
 
 
 
@@ -183,37 +183,37 @@ Agora podemos acessar cada um desses métodos, respectivamente, com as seguintes
 Para começarmos a trabalhar com o boxJS precisamos, antes de mais nada, fazer algumas configurações no nosso ambiente de 
 desenvolvimento. Começamos criando um Dynamic Web Project
 
-(tutorial_primeiro_projeto/criando_projeto1)
+![Criando projeto](tutorial_primeiro_projeto/criando_projeto1.png)
 
-(tutorial_primeiro_projeto/criando_projeto2)
+![Criando projeto](tutorial_primeiro_projeto/criando_projeto2)
 
 Neste passo é importante checar se o Tomcat esta selecionado e clicar para ir para o próximo, ao invés de finalizar, conforme 
 imagem abaixo:
 
-(tutorial_primeiro_projeto/criando_projeto3)
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto3)
 
 Nesta tela não há necessidade de modificar nada, apenas sigua para a próxima.
 
-(tutorial_primeiro_projeto/criando_projeto4)
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto4)
 
 Nesta parte é importante marcar a opção de Gerar o web.xml automaticamente, conforme imagem abaixo:
 
-(tutorial_primeiro_projeto/criando_projeto5)
+![Configuracao novo projeto](tutorial_primeiro_projeto/criando_projeto5)
 
 Pronto, temos nosso primeiro projeto criado, porém o boxjs ainda não funcionará, precisamos fazer apenas mais uma configuração.
 
 Adicionaremos à pasta lib, que está dentro da pasta WEB-INF, que, por sua vez, está dentro da pasta WebContent, o jar do boxjs,
 do tomcat e da api de servlet, conforme imagem abaixo:
 
-(tutorial_primeiro_projeto/criando_projeto6)
+![Jars na pasta lib](tutorial_primeiro_projeto/criando_projeto6)
 
 
 
 Feito isso, basta que adicionemos nosso novo projeto ao Tomcat, conforme as imagens abaixo:
 
-(tutorial_primeiro_projeto/criando_projeto7)
+![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto7)
 
-(tutorial_primeiro_projeto/criando_projeto8)
+![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto8)
 
 
 Pronto, nosso ambiente já está completamente pronto para funcionar o boxJS!
