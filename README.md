@@ -1,3 +1,4 @@
+//baseado em: https://github.com/go-martini/martini
 # boxJS
 
 O boxJS é um container de execução JavaScript para servidores Web, 
@@ -41,7 +42,7 @@ Pronto, já temos nossa primeira página fornecida via boxJS!
 
 
 
-(Ensinar a configurar o config.js)
+## Configurando o `config.js`
 
 Voce pode ter reparado que o servidor encontrou alguns erros ao subir nosso primeiro projeto, isso aconteceu pois
 toda vez que o boxJS é instanciado ele procura pelo arquivo `config.js` dentro da pasta `boxjs`, este arquivo
@@ -92,7 +93,7 @@ singleton="false" user="" pass="" uri="mongodb://localhost:27017/nome_do_banco"/
 
 
 
-(Ensinar a configurar as rotas)
+Configurando rotas
 
 Além das páginas html que estão na pasta 'WebContent' que são fornecidas normalmente pelo Tomcat, já sabemos que é possivel
 fornecer páginas através de comandos Javascript desde que os arquivos com estes comandos estejam dentro da pasta `boxjs`. 
@@ -177,7 +178,7 @@ Agora podemos acessar cada um desses métodos, respectivamente, com as seguintes
 
 
 
-(Ensinando a configurar o ambiente)
+## Configurando o ambiente de desenvolvimento
 
 
 Para começarmos a trabalhar com o boxJS precisamos, antes de mais nada, fazer algumas configurações no nosso ambiente de 
