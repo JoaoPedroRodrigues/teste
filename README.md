@@ -1,4 +1,3 @@
-//baseado em: https://github.com/go-martini/martini
 # boxJS
 
 O boxJS é um container de execução JavaScript para servidores Web, 
