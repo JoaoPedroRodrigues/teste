@@ -33,7 +33,7 @@ Agora que já temos tudo configurado, abra seu browser e acesse a seguinte URL `
 
 Pronto, já temos nossa primeira página fornecida via boxJS!
 
-## Conseguindo Ajuda
+## Precisando de Ajuda
 
 Envie-nos um [e-mail](mailto:suporteboxjs@softbox.com.br)
 
@@ -55,6 +55,7 @@ Faça perguntas no Stackoverflow usando a [tag boxJS](http://pt.stackoverflow.co
 * [Configurando o ambiente de desenvolvimento](#configurando-o-ambiente-de-desenvolvimento)
 * [Configurando o `config.js`](#configurando-o-configjs)
 * [Configurando rotas](#configurando-rotas)
+* [Utilizando o `security.js`](#utilizando-o-securityjs)
 
 
 ## Configurando o ambiente de desenvolvimento
@@ -172,7 +173,7 @@ var config = {
 ![Configjs](img-config-js-na-pasta.png)
 
 
-Agora podemos criar o arquivo `routes.js` que conterá nossas rotas:
+Agora podemos criar o arquivo `routes.js` que irá conter nossas rotas:
 
 
 ~~~ javascript
@@ -225,3 +226,32 @@ Agora podemos acessar cada um desses métodos, respectivamente, com as seguintes
 
 
 ![UrlRotesBrowser](acessando-url-routes.png)
+
+
+
+
+## Utilizando o `security.js`
+
+Caso algum módulo com o nome de `security` seja adicionado ao `config.js`, o boxJS garante que todas as requisições, passem, 
+primeiramente, por este módulo, isso possibilita que seja criado algum tipo de restrição de acesso, onde uma certa página só será 
+fornecida pelo servidor caso as restrições impostas pelo módulo security sejam atingidas.
+
+Por padrão o arquivo security vem conforme ![descrito aqui](boxjs/modules/security.js), ou seja, autorizando todo e qualquer acesso, porém 
+tornar alguma página inacessível é uma tarefa simples.
+
+Podemos tornar a página `localhost:8080/helloWorld/boxjs/hello/modern` inacessível fazendo as seguintes alterações ao `security.js` padrão:
+
+~~~ javascript
+
+safe.hasPermissionInThisMethod = function (paramsObject, request, response, methodName) {
+
+	if(methodName=="modern") {
+		http.response.setStatus(403);
+		return false;
+	}
+	
+    return true;
+};
+
+
+~~~
