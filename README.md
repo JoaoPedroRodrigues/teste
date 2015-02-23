@@ -257,4 +257,4 @@ safe.hasPermissionInThisMethod = function (paramsObject, request, response, meth
 ~~~
 
 Lembramos que o `security.js` que vai junto com o boxJS é apenas um esboço de um módulo de segurança, quem o utiliza tem liberdade para 
-(e deve) alterar completamente o seu funcionamento.
+(e deve) alterar o seu funcionamento.
