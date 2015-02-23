@@ -33,6 +33,29 @@ Agora que já temos tudo configurado, abra seu browser e acesse a seguinte URL `
 
 Pronto, já temos nossa primeira página fornecida via boxJS!
 
+## Conseguindo Ajuda
+
+Envie-nos um [e-mail](mailto:suporteboxjs@softbox.com.br)
+
+Faça perguntas no Stackoverflow usando a [tag boxJS](http://pt.stackoverflow.com/questions/tagged/boxjs)
+
+
+## Vantagens
+
+* SSJS baseado em threads
+* Performático
+* Fácil aprendizado
+* Simples de usar
+* Bom conjunto de APIs para utilização imediata
+
+
+## Sumário
+
+
+* [Configurando o ambiente de desenvolvimento](#configurando-o-ambiente-de-desenvolvimento)
+* [Configurando o `config.js`](#configurando-o-configjs)
+* [Configurando rotas](#configurando-rotas)
+
 
 ## Configurando o ambiente de desenvolvimento
 
@@ -133,7 +156,7 @@ singleton="false" user="" pass="" uri="mongodb://localhost:27017/nome_do_banco"/
 Além das páginas html que estão na pasta `WebContent` que são fornecidas normalmente pelo Tomcat, já sabemos que é possivel
 fornecer páginas através de comandos Javascript desde que os arquivos com estes comandos estejam dentro da pasta `boxjs`. 
 Outra possibilidade que o boxJS traz é o uso de rotas, essas rotas podem ser definidas no arquivo `config.js`, do qual [já 
-falamos anteriormente](#configurando-o-config.js), ou em um outro arquivo qualquer, desde que este seja adicionado como 
+falamos anteriormente](#configurando-o-configjs), ou em um outro arquivo qualquer, desde que este seja adicionado como 
 módulo no `config.js`. Consideramos o segundo modo o mais correto e é ele que pode ser encontrado no exemplo abaixo:
 
 Primeiro devemos criar nosso arquivo `config.js`, nele incluiremos apenas o nosso módulo `routes`:
