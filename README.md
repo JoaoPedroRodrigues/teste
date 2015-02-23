@@ -236,7 +236,7 @@ Caso algum módulo com o nome de `security` seja adicionado ao `config.js`, o bo
 primeiramente, por este módulo, isso possibilita que seja criado algum tipo de restrição de acesso, onde uma certa página só será 
 fornecida pelo servidor caso as restrições impostas pelo módulo `security` sejam atingidas.
 
-Por padrão o arquivo security vem conforme ![descrito aqui](boxjs/modules/security.js), ou seja, autorizando todo e qualquer acesso, porém 
+Por padrão o arquivo security vem conforme ![descrito aqui](https://github.com/cneryjr/boxjs/blob/master/boxjs/modules/security.js), ou seja, autorizando todo e qualquer acesso, porém 
 tornar alguma página inacessível é uma tarefa simples.
 
 Podemos tornar a página `localhost:8080/helloWorld/boxjs/hello/modern` inacessível fazendo as seguintes alterações ao `security.js` padrão:
