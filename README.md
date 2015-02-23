@@ -33,7 +33,7 @@ Agora que já temos tudo configurado, abra seu browser e acesse a seguinte URL `
 
 Pronto, já temos nossa primeira página fornecida via boxJS!
 
-## Precisando de Ajuda
+## Precisando de Ajuda?
 
 Envie-nos um [e-mail](mailto:suporteboxjs@softbox.com.br)
 
