@@ -234,7 +234,7 @@ Agora podemos acessar cada um desses métodos, respectivamente, com as seguintes
 
 Caso algum módulo com o nome de `security` seja adicionado ao `config.js`, o boxJS garante que todas as requisições, passem, 
 primeiramente, por este módulo, isso possibilita que seja criado algum tipo de restrição de acesso, onde uma certa página só será 
-fornecida pelo servidor caso as restrições impostas pelo módulo security sejam atingidas.
+fornecida pelo servidor caso as restrições impostas pelo módulo `security` sejam atingidas.
 
 Por padrão o arquivo security vem conforme ![descrito aqui](boxjs/modules/security.js), ou seja, autorizando todo e qualquer acesso, porém 
 tornar alguma página inacessível é uma tarefa simples.
@@ -255,3 +255,6 @@ safe.hasPermissionInThisMethod = function (paramsObject, request, response, meth
 
 
 ~~~
+
+Lembramos que o `security.js` que vai junto com o boxJS é apenas um esboço de um módulo de segurança, quem o utiliza tem liberdade para 
+(e deve) alterar completamente o seu funcionamento.
