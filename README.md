@@ -89,7 +89,7 @@ Feito isso, basta que adicionemos nosso novo projeto ao Tomcat, conforme as imag
 
 ![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto8.png)
 
-É importante lembrar que todos os arquivos `.js` devem estar dentro da pasta boxjs, conforme a 
+É importante lembrar que todos os arquivos `.js` devem estar dentro da pasta boxjs ou algum subdiretório, conforme a 
 imagem abaixo.
 
 
