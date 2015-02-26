@@ -8,30 +8,23 @@ ou seja, é uma plataforma Server-Side JavaScript(SSJS).
 
 ## Primeiros Passos
 
-
-Considerando que você já está com boxJS pronto para rodar (caso não esteja, siga para o [tutorial de configuração do ambiente
-de desenvolvimento](#configurando-o-ambiente-de-desenvolvimento)), já podemos criar nosso primeiro arquivo javascript que será executado pelo 
-servidor. Podemos chamá-lo de 'hello.js' e escreveremos apenas o seguinte código nele:
+Depois de [configurar o seu ambiente para o funcionamento do boxJS](#configurando-o-ambiente-de-desenvolvimento), já podemos criar 
+nosso primeiro arquivo javascript que será executado pelo servidor. Podemos chamá-lo de 'hello.js' e escreveremos apenas o seguinte código nele:
 
 ~~~ javascript
 
-http.response.write("<html><body> <h1>Hello boxJS!</h1> </body></html>");
+exports = {
+	world: function (params,request,response) {
+		response.write("<html><body> <h1>Hello world!</h1> </body></html>");
+	}
+}
 
 ~~~
 
 
-É importante lembrar que este arquivo deve estar dentro da pasta boxjs, conforme a 
-imagem abaixo.
-
-
-![Hello World](hello_dentro_boxjs.png)
-
-
-Agora que já temos tudo configurado, abra seu browser e acesse a seguinte URL `localhost:8080/<nome_do_projeto>/boxjs/hello.js`.
+Agora, já podemos acessar nossa primeira página fornecida via boxJS através da seguinte URL `localhost:8080/<nome_do_projeto>/boxjs/hello/world`.
 
 ![Browser](browser_com_primeira_pagina.png)
-
-Pronto, já temos nossa primeira página fornecida via boxJS!
 
 ## Precisando de Ajuda?
 
@@ -95,6 +88,12 @@ Feito isso, basta que adicionemos nosso novo projeto ao Tomcat, conforme as imag
 ![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto7.png)
 
 ![Adicionando projeto ao servidor](tutorial_primeiro_projeto/criando_projeto8.png)
+
+É importante lembrar que todos os arquivos `.js` devem estar dentro da pasta boxjs, conforme a 
+imagem abaixo.
+
+
+![Hello World](hello_dentro_boxjs.png)
 
 
 Pronto, nosso ambiente já está completamente pronto para funcionar o boxJS!
@@ -258,3 +257,5 @@ safe.hasPermissionInThisMethod = function (paramsObject, request, response, meth
 
 Lembramos que o `security.js` que vai junto com o boxJS é apenas um esboço de um módulo de segurança, quem o utiliza tem liberdade para 
 (e deve) alterar o seu funcionamento.
+
+OBS: Para pegar um header de uma requisição, basta usar o seguinte método `http.requestJava.getHeader("nome-do-header")`.
