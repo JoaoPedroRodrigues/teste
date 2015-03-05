@@ -288,10 +288,13 @@ var config = {
 Após modificar o `config.js` para ter estas configurações, devemos adicionar o datasource ao nosso servidor, isso pode ser feito adicionando
 a seguinte tag ao context.xml:
 
+~~~ xml
+
 <Resource name="mongo/MongoDSFactory" auth="Container"
 type="com.mongodb.MongoClient" factory="softbox.boxjs.MongoDSFactory"
 singleton="false" user="" pass="" uri="mongodb://localhost:27017/nome_do_banco"/>
 
+~~~
 
 ![DatasourceNoContext](datasource-no-context.png)
 
@@ -306,7 +309,7 @@ Finalmente, adicione o jar do driver de conexão ao mongo à pasta `lib` do `WEB
 
 ### Usando o MongoDB
 
-Para usar o MongoDB recomendamos a criação de um módulo `init`, com apenas o seguinte código:
+Para usar o MongoDB recomendamos a criação de um módulo `init.js`, com apenas o seguinte código:
 
 
 ~~~ javascript
@@ -319,12 +322,12 @@ db.nome_do_banco = function() {
 
 ~~~
 
-Esse módulo init deve ser adicionado ao config e é importante para garantir que não serão criadas múltiplas conexões com o banco, com este passo pronto, basta que,
+Esse módulo init deve ser adicionado ao `config.js` e é importante para garantir que não serão criadas múltiplas conexões com o banco, com este passo pronto, basta que,
 quando for necessário acessar uma collection, seja utilizado um código semelhante a:
 
 ~~~ javascript
 
-var collection = db.approval().getCollection("nome_da_collection");
+var collection = db.nome_do_banco().getCollection("nome_da_collection");
 
 ~~~
 
@@ -339,3 +342,5 @@ Com uma collection em mãos uma variedade de operações pode ser utilizada:
   * upsert - caso nenhuma entrada seja compatível com 'query', invés de atualizar, insere uma nova entrada
   * multi - atualiza todas as entradas compatíveis com 'query'
 * aggregate - http://docs.mongodb.org/manual/aggregation/
+
+Mais detalhes podem ser vistos no próprio código comentado do módulo do mongo que você adicionou a sua pasta `modules`.
