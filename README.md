@@ -78,8 +78,8 @@ Nesta parte é importante marcar a opção de gerar o web.xml automaticamente, c
 
 Pronto, temos nosso primeiro projeto criado, porém o boxJS ainda não funcionará, precisamos fazer apenas mais uma configuração.
 
-Adicionaremos à pasta `lib`, que está dentro da pasta `WEB-INF`, que, por sua vez, está dentro da pasta `WebContent`, o jar do boxJS,
-do Tomcat e da api de servlet, conforme imagem abaixo:
+Adicionaremos à pasta `lib`, que está dentro da pasta `WEB-INF`, que, por sua vez, está dentro da pasta `WebContent`, o [jar do boxJS](https://github.com/JoaoPedroRodrigues/teste/raw/master/boxjs.jar),
+do [Tomcat](http://www.java2s.com/Code/Jar/t/Downloadtomcatjdbcjar.htm) e da [api de servlet](http://www.java2s.com/Code/Jar/s/Downloadservletapi30jar.htm), conforme imagem abaixo:
 
 ![Jars na pasta lib](tutorial_primeiro_projeto/criando_projeto6.png)
 
@@ -304,7 +304,7 @@ Agora adicione [o módulo do mongo](https://raw.githubusercontent.com/cneryjr/bo
 ![DatasourceNoContext](mongodb-no-modules.png)
 
 
-Finalmente, adicione o jar do driver de conexão ao mongo à pasta `lib` do `WEB-INF` e tudo deve funcionar normalmente.
+Finalmente, adicione o [jar do driver de conexão ao mongo](https://github.com/mongodb/mongo-java-driver/releases/tag/r2.12.3) à pasta `lib` do `WEB-INF` e tudo deve funcionar normalmente.
 
 
 ### Usando o MongoDB
