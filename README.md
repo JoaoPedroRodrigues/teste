@@ -49,7 +49,9 @@ Faça perguntas no Stackoverflow usando a [tag boxJS](http://pt.stackoverflow.co
 * [Configurando o `config.js`](#configurando-o-configjs)
 * [Configurando rotas](#configurando-rotas)
 * [Utilizando o `security.js`](#utilizando-o-securityjs)
-
+* [MongoDB](#mongodb)
+  * [Preparando para usar o MongoDB](#preparando-para-usar-o-mongodb)
+  * [Usando o MongoDB](#usando-o-mongodb)
 
 ## Configurando o ambiente de desenvolvimento
 
@@ -164,7 +166,7 @@ Primeiro devemos criar nosso arquivo `config.js`, nele incluiremos apenas o noss
 ~~~ javascript
 
 var config = {
-	modules: ["routes"],
+	modules: ["routes"]
 };
 
 ~~~
@@ -259,3 +261,81 @@ Lembramos que o `security.js` que vai junto com o boxJS é apenas um esboço de 
 (e deve) alterar o seu funcionamento.
 
 OBS: Para pegar um header de uma requisição, basta usar o seguinte método `http.requestJava.getHeader("nome-do-header")`.
+
+
+
+## MongoDB
+
+
+### Preparando para usar o MongoDB
+
+Como citado na parte de [como usar o `config.js`](#configurando-o-configjs), para usarmos o mongoDB o primeiro passo é adicioná-lo aos
+módulos no `config.js` e citar o link com o banco:
+
+~~~ javascript
+
+var config = {
+	modules: ["mongodb"],
+
+	mongodb: {
+		datasource: "java:comp/env/mongo/MongoDSFactory"
+	}
+};
+
+~~~
+
+
+Após modificar o `config.js` para ter estas configurações, devemos adicionar o datasource ao nosso servidor, isso pode ser feito adicionando
+a seguinte tag ao context.xml:
+
+<Resource name="mongo/MongoDSFactory" auth="Container"
+type="com.mongodb.MongoClient" factory="softbox.boxjs.MongoDSFactory"
+singleton="false" user="" pass="" uri="mongodb://localhost:27017/nome_do_banco"/>
+
+
+![DatasourceNoContext](datasource-no-context.png)
+
+
+Agora adicione [o módulo do mongo](https://raw.githubusercontent.com/cneryjr/boxjs/master/boxjs/modules/mongodb.js) a sua pasta `modules`.
+
+![DatasourceNoContext](mongodb-no-modules.png)
+
+
+Finalmente, adicione o jar do driver de conexão ao mongo à pasta `lib` do `WEB-INF` e tudo deve funcionar normalmente.
+
+
+### Usando o MongoDB
+
+Para usar o MongoDB recomendamos a criação de um módulo `init`, com apenas o seguinte código:
+
+
+~~~ javascript
+
+db = db || {};
+
+db.nome_do_banco = function() {
+	return db.MongoDB.getDB("nome_do_banco");
+}
+
+~~~
+
+Esse módulo init deve ser adicionado ao config e é importante para garantir que não serão criadas múltiplas conexões com o banco, com este passo pronto, basta que,
+quando for necessário acessar uma collection, seja utilizado um código semelhante a:
+
+~~~ javascript
+
+var collection = db.approval().getCollection("nome_da_collection");
+
+~~~
+
+Com uma collection em mãos uma variedade de operações pode ser utilizada:
+
+* insert(doc) - insere um documento a uma collection
+* find(query,fields) - executa a 'query' na collection retornando apenas os campos determinados em 'fields'
+* count(query) - conta quantos documentos são compatíveis com 'query', sem carregá-los
+* distinct(field, query) - retorna os valores que um determinado campo, 'field', assume, caso haja uma 'query', só retorna os valores distintos para esta 'query'
+* remove(query) - remove as emtradas que são compatíveis com 'query'
+* update(query,update,options) - atualiza as entradas que são compatíveis com 'query' para o valor 'update', sendo possível utilizar duas configurações opcionais:
+  * upsert - caso nenhuma entrada seja compatível com 'query', invés de atualizar, insere uma nova entrada
+  * multi - atualiza todas as entradas compatíveis com 'query'
+* aggregate - http://docs.mongodb.org/manual/aggregation/
