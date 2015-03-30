@@ -173,7 +173,7 @@ Parametros: Leilão a ser inserido.
 
 Retorna: Informa se a inserção falhou ou não.
 
-Primitivas:
+Regras de negócio:
 
 - Status do novo leilão deve ser 'aberto'
 
@@ -217,7 +217,7 @@ function getNextSequence(name) {
 
 #### leilao/buscar
 
-Objetivo: Buscar leilôes do banco.
+Objetivo: Buscar leilões do banco.
 
 Parametros: Query a ser executada e campos a serem retornado.
 
@@ -244,7 +244,7 @@ Parametros: ID do leilão que receberá o lance e o lance.
 
 Retorna: Informa se a adição do lance falhou ou não.
 
-Primitivas:
+Regras de negócio:
 
 - Para um lance ser aceito ele deve ser maior que o mínimo e maior que o lance anterior, caso ele exista.
 
@@ -278,7 +278,7 @@ Parametros: ID do leilão a ser fechado.
 
 Retorna: Leilão fechado, caso o fechamento ocorra.
 
-Primitivas:
+Regras de negócio:
 
 - Testar se existe um leilão com o ID indicado.
 
@@ -342,7 +342,7 @@ Parametros: Usuário a ser inserido.
 
 Retorna: Informa se a inserção do usuario falhou ou não.
 
-Primitivas:
+Regras de negócio:
 
 - Setar o tipo do usuário para 'basic'.
 
