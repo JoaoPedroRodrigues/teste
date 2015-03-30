@@ -153,18 +153,20 @@ Router.add( 'svr', 'actions/svr');
 O primeiro passo parar implementar estes dois arquivos é saber quais serão os seus métodos, conforme vimos na criação do `routes.js`, o front end irá acessar as URLs: `boxjs/leilao/inserir`, `boxjs/leilao/buscar`, 
 `boxjs/leilao/darlance`, `boxjs/leilao/fechar`, `boxjs/usuario/tela`, `boxjs/usuario/buscar`, `boxjs/usuario/inserir`. Logo, nossos métodos são:
 
-leilao -> inserir
-	  buscar
-	  darlance
-	  fechar
+* leilao
+  * inserir
+  * buscar
+  * darlance
+  * fechar
 
-usuario -> tela
-	   buscar
-	   inserir
+* usuario
+  * tela
+  * buscar
+  * inserir
 
 
 
-leilao/inserir - 
+#### leilao/inserir - 
 
 Objetivo: Inserir um novo leilão no banco.
 
