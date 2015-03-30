@@ -165,7 +165,7 @@ O primeiro passo parar implementar estes dois arquivos é saber quais serão os 
 
 
 
-#### leilao/inserir - 
+#### leilao/inserir
 
 Objetivo: Inserir um novo leilão no banco.
 
@@ -215,7 +215,7 @@ function getNextSequence(name) {
 
 
 
-#### leilao/buscar - 
+#### leilao/buscar
 
 Objetivo: Buscar leilôes do banco.
 
@@ -236,7 +236,7 @@ buscar: function (params,request,response) {
 ~~~
 
 
-#### leilao/darlance - 
+#### leilao/darlance
 
 Objetivo: Adicionar um lance a um leilão do banco.
 
@@ -270,7 +270,7 @@ darlance: function (params,request,response) {
 
 
 
-#### leilao/fechar - 
+#### leilao/fechar
 
 Objetivo: Fechar um leilão do banco.
 
@@ -313,7 +313,7 @@ fechar: function (params,request,response) {
 
 
 
-#### usuario/tela - 
+#### usuario/tela
 
 Objetivo: Verificar se a tela de usuario pode ser acessada pelo usuario atual.
 
@@ -334,7 +334,7 @@ OBS: Este método fará mais sentido quando o `security.js` for implementado.
 
 
 
-#### usuario/inserir - 
+#### usuario/inserir
 
 Objetivo: Inserir um novo usuário ao banco.
 
@@ -369,7 +369,7 @@ inserir: function (params,request,response) {
 ~~~
 
 
-#### usuario/buscar - 
+#### usuario/buscar
 
 Objetivo: Buscar usuários no banco.
 
