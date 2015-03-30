@@ -155,10 +155,9 @@ O primeiro passo parar implementar estes dois arquivos é saber quais serão os 
 
 * leilao
   * [inserir](#leilaoinserir)
-  * [buscar]](#leilaobuscar)
+  * [buscar](#leilaobuscar)
   * [darlance](#leilaodarlance)
   * [fechar](#leilaofechar)
-
 * usuario
   * [tela](#usuariotela)
   * [buscar](#usuariobuscar)
