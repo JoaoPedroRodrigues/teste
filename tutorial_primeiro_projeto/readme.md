@@ -2,8 +2,8 @@
 
 # Tutorial Leilão boxJS
 
-Uma das formas mais comum de nós programadores aprendermos a programar com uma nova linguagem ou um novo framework, é, com certeza, usando-o para desenvolver
-alguma aplicação, então, para fixar o que foi ensinado sobre o boxJS até o momento, propomos a construção de uma simples aplicação Web de leilões online.
+Uma das formas mais comum de nós programadores aprendermos a programar em uma nova linguagem ou um novo framework, é, com certeza, usando-o para desenvolver
+alguma aplicação, então, para fixar o que foi ensinado sobre o boxJS até o momento, propomos a construção de uma simples aplicação web de leilões online.
 
 
 ## Sumário
@@ -24,15 +24,15 @@ conhecimento básico delas.
 
 ### Front End
 
-Como nosso objetivo é focar no aprendizado do boxJS, a parte front-end do nosso leilão já está pronta para download [clicando aqui](https://www.dropbox.com/s/xyo3b8cgra6oq4u/leilaoBoxJS.rar?dl=0), 
-mas você esta livre caso queira implementá-la, apenas certifique-se que o front-end esteja utilizando corretamente o boxJS (para isso recomendamos que você faça o 
-download e veja como nós acessamos o back-end).
+Como nosso objetivo é focar no aprendizado do boxJS, a parte front end do nosso leilão já está pronta para download [clicando aqui](https://www.dropbox.com/s/xyo3b8cgra6oq4u/leilaoBoxJS.rar?dl=0), 
+mas você esta livre caso prefira implementá-la, apenas certifique-se que o front end esteja utilizando corretamente o boxJS (para isso recomendamos que você faça o 
+download e veja como nós acessamos o back end).
 
 
 ## Back End com boxJS
 
-Nosso tutorial começa, de fato, a partir de agora, mas consideramos que você seguiu e leu todos os passos até aqui e que já está com seu [front end pronto e o boxJS funcionando, com alguns setups
-básicos](#front-end), conforme ensinado nos tutoriais anteriores.
+Nosso tutorial começa, de fato, a partir de agora, mas consideramos que você seguiu e [leu todos os passos até aqui](https://github.com/JoaoPedroRodrigues/teste/blob/master/README.md) e que já está com seu 
+[front end pronto e o boxJS funcionando, com alguns setups básicos](#front-end), conforme ensinado nos tutoriais anteriores.
 
 ### `routes.js`
 
