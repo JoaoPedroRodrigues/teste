@@ -8,6 +8,14 @@ alguma aplicação, então, para fixar o que foi ensinado sobre o boxJS até o m
 
 ## Sumário
 
+* [Antes de começar](#antes-de-come%C3%A7ar)
+  * [Bootstrap e AngularJS](#bootstrap-e-angularjs)
+  * [Front End](#front-end)
+* [Back End com boxJS](#back-end-com-boxjs)
+  * [`routes.js`](#routesjs) 
+  * [`leilao.js` e `usuario.js`](#leilaojs-e-usuariojs)
+  * [`svr.js`](#svrjs)
+  * [`security.js`](#securityjs)
 
 ## Antes de começar
 
@@ -558,9 +566,9 @@ exports = {
 
 ### `security.js`
 
-Conforme vimos [anteriormente](https://github.com/JoaoPedroRodrigues/teste/blob/master/README.md#utilizando-o-securityjs), o security constitui parte importante de uma aplicação,
+Conforme vimos [anteriormente](https://github.com/JoaoPedroRodrigues/teste/blob/master/README.md#utilizando-o-securityjs), o módulo de segurança constitui parte importante de uma aplicação,
 uma vez que é ele quem restringe os usuários a acessarem certas funcionalidades do nosso sistema. E, como no nosso leilão existem dois tipos de
-usuários (administrador, que criaria e fecharia leilões, além de fazer o cadastro de usuários, e usuário padrão, que apenas daria lances), este tipo de
+usuários (administrador, que cria e fecha leilões, além de fazer o cadastro de usuários, e usuário padrão, que apenas da lances), este tipo de
 restrição é de extrema importância.
 
 Pegando como base os métodos desenvolvidos até o momento e os 3 tipos de acesso (usuário administrador, usuário padrão e visitante) com os quais podemos nos deparar, podemos 
@@ -587,7 +595,7 @@ definir como será nosso controle de acesso.
 
 Encaixando esse modelo nos 4 métodos do security que vêm por padrão com o boxJS, temos que:
 
-- isUserLogged: Deve barrar qualquer acesso que não for ao `svr/login`.
+- isUserLogged: Deve barrar qualquer acesso que não for ao `svr/login`, quando o usuário não esta logado.
 
 - isSessionValid: Não deve barrar em nenhum caso.
 
@@ -706,5 +714,5 @@ print("security.js loaded ......................................................
 
 ~~~
 
-OBS: vale lembrar que no nosso front end enviamos, junto com todas requisições, um header chamado 'Authorization' que possui o tipo de autorização, o nome do usuário e o token de acesso.
+OBS: Vale lembrar que no front end enviamos, junto com todas requisições, um header chamado 'Authorization' que possui o tipo de autorização, o nome do usuário e o token de acesso.
 Esse header é usado pelo security para identificar o usuário e para conferir se o token de acesso é válido.
