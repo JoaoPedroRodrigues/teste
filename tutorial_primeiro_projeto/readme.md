@@ -558,7 +558,7 @@ exports = {
 
 ### `security.js`
 
-Conforme vimos (anteriormente)[https://github.com/JoaoPedroRodrigues/teste/blob/master/README.md#utilizando-o-securityjs], o security constitui parte importante de uma aplicação,
+Conforme vimos [anteriormente](https://github.com/JoaoPedroRodrigues/teste/blob/master/README.md#utilizando-o-securityjs), o security constitui parte importante de uma aplicação,
 uma vez que é ele quem restringe os usuários a acessarem certas funcionalidades do nosso sistema. E, como no nosso leilão existem dois tipos de
 usuários (administrador, que criaria e fecharia leilões, além de fazer o cadastro de usuários, e usuário padrão, que apenas daria lances), este tipo de
 restrição é de extrema importância.
