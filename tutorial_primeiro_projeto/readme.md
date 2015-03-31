@@ -169,15 +169,15 @@ O primeiro passo parar implementar estes dois arquivos é saber quais serão os 
 
 Objetivo: Inserir um novo leilão no banco.
 
-Parametros: Leilão a ser inserido.
+Parâmetros: Leilão a ser inserido.
 
 Retorna: Informa se a inserção falhou ou não.
 
 Regras de negócio:
 
-- Status do novo leilão deve ser 'aberto'
+- Status do novo leilão deve ser 'aberto'.
 
-- Não deve existir lances.
+- Lista de lances deve estar vazia.
 
 - O ID deve ser incremental.
 
@@ -219,7 +219,7 @@ function getNextSequence(name) {
 
 Objetivo: Buscar leilões do banco.
 
-Parametros: Query a ser executada e campos a serem retornado.
+Parâmetros: Query a ser executada e campos a serem retornado.
 
 Retorna: Array de leilões resultantes da execução da query com os campos especificados.
 
@@ -240,7 +240,7 @@ buscar: function (params,request,response) {
 
 Objetivo: Adicionar um lance a um leilão do banco.
 
-Parametros: ID do leilão que receberá o lance e o lance.
+Parâmetros: ID do leilão que receberá o lance e o lance.
 
 Retorna: Informa se a adição do lance falhou ou não.
 
@@ -274,7 +274,7 @@ darlance: function (params,request,response) {
 
 Objetivo: Fechar um leilão do banco.
 
-Parametros: ID do leilão a ser fechado.
+Parâmetros: ID do leilão a ser fechado.
 
 Retorna: Leilão fechado, caso o fechamento ocorra.
 
@@ -338,7 +338,7 @@ OBS: Este método fará mais sentido quando o `security.js` for implementado.
 
 Objetivo: Inserir um novo usuário ao banco.
 
-Parametros: Usuário a ser inserido.
+Parâmetros: Usuário a ser inserido.
 
 Retorna: Informa se a inserção do usuario falhou ou não.
 
@@ -373,7 +373,7 @@ inserir: function (params,request,response) {
 
 Objetivo: Buscar usuários no banco.
 
-Parametros: Query a ser executada e campos a serem retornado.
+Parâmetros: Query a ser executada e campos a serem retornado.
 
 Retorna: Array de usuários resultantes da execução da query com os campos especificados.
 
@@ -393,7 +393,7 @@ buscar: function (params,request,response) {
 
 
 
-Agora basta que juntemos todos esses métodos em seus respectivos arquivos, utilizando um objeto exports
+Agora basta que juntemos todos esses métodos em seus respectivos arquivos, utilizando um objeto exports:
 
 
 ~~~ javascript
@@ -506,11 +506,11 @@ A primeira parte do nosso método, será, então, checar se o usuário e senha f
 e aquele nome de usuário, caso afirmativo, os dados são válidos e o usuário deve receber seu token de acesso.
 
 O token de acesso pode ser feito de qualquer maneira, só é importante que ele seja único para um usuário, não possa ser gerado por algum usuário mal intencionado e seja possível
-que o servidor cheque que aquele token é de um determinado usuário. Para suprir todos estes pré-requisitos, nosso token será a concatenação do nome do usuário, tempo máximo de duração do token
+que o servidor cheque se um determinado token é de um determinado usuário. Para suprir todos estes pré-requisitos, nosso token será a concatenação do nome do usuário, tempo máximo de duração do token
 e o tipo do usuário, tudo isso criptografado utilizando o AES e uma chave que é de conhecimento apenas do servidor.
 
-Para utilizar o AES adicionaremos à pasta modules o arquivo [`aes.js`](http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js), e além de acrescentar ao `config.js` esse novo módulo,
-colocaremos aqui a chave de criptografia que será usada, deixando o nosso `config.js` da seguinte forma:
+Para utilizar o AES adicionaremos à pasta `modules` o arquivo [`aes.js`](http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js), e além de acrescentar esse novo módulo ao `config.js`,
+colocaremos nele a chave de criptografia que será usada, deixando o nosso `config.js` da seguinte forma:
 
 ~~~ javascript
 
@@ -548,7 +548,7 @@ exports = {
 		else {
 			print("-- login failed svr.js [finished] --------------------------------------------");
 			response.setStatus(401);
-			response.write(JSON.stringify({error: true, reason: "Senha e/ou password invalido."}));
+			response.write(JSON.stringify({error: true, reason: "Senha e/ou password inválido."}));
 		}
 	}
 }
@@ -556,12 +556,155 @@ exports = {
 ~~~
 
 
-// ensinar a programar o security.js
+### `security.js`
+
+Conforme vimos (anteriormente)[https://github.com/JoaoPedroRodrigues/teste/blob/master/README.md#utilizando-o-securityjs], o security constitui parte importante de uma aplicação,
+uma vez que é ele quem restringe os usuários a acessarem certas funcionalidades do nosso sistema. E, como no nosso leilão existem dois tipos de
+usuários (administrador, que criaria e fecharia leilões, além de fazer o cadastro de usuários, e usuário padrão, que apenas daria lances), este tipo de
+restrição é de extrema importância.
+
+Pegando como base os métodos desenvolvidos até o momento e os 3 tipos de acesso (usuário administrador, usuário padrão e visitante) com os quais podemos nos deparar, podemos 
+definir como será nosso controle de acesso.
 
 
+* Visitante
+  * svr/login
+* Padrão
+  * svr/login
+  * leilao/darlance
+  * leilao/buscar
+  * usuario/buscar
+* Administrador
+  * svr/login
+  * leilao/darlance
+  * leilao/buscar
+  * leilao/inserir
+  * leilao/fechar
+  * usuario/tela
+  * usuario/buscar
+  * usuario/inserir
 
 
+Encaixando esse modelo nos 4 métodos do security que vêm por padrão com o boxJS, temos que:
 
-// profit
+- isUserLogged: Deve barrar qualquer acesso que não for ao `svr/login`.
+
+- isSessionValid: Não deve barrar em nenhum caso.
+
+- hasPermissionInThisModule: Não deve barrar em nenhum caso.
+
+- hasPermissionInThisMethod: Não deve barrar acesso ao `svr/login`. Deve barrar acesso aos métodos `inserir`, `fechar` e `tela`, quando o usuário não for administrador.
 
 
+O que deixa nosso `security.js` da seguinte forma:
+
+~~~ javascript
+
+var safe = safe || {};
+
+safe.isItSafe = function (paramsObject, request, response) {
+	
+    var uri = new String(request.requestURI);
+
+	var p = uri.split("/");
+	var moduleName = p[p.length-2];
+	var methodName = p[p.length-1];	
+
+    return this.isUserLogged(paramsObject, request, response)
+        && this.isSessionValid(paramsObject, request, response)
+        && this.hasPermissionInThisModule(paramsObject, request, response, moduleName)
+        && this.hasPermissionInThisMethod(paramsObject, request, response, methodName);
+};
+
+safe.isUserLogged = function(paramsObject, request, response) {
+
+	if(request.pathInfo == "/svr/login") {
+		http.response.setStatus(200);
+		return true;
+	}
+	
+	if(!http.requestJava.getHeader("Authorization")) {
+		http.response.setStatus(401);
+		return false;
+	}
+	
+	var headerToken = http.requestJava.getHeader("Authorization").slice(6);
+	
+	if(headerToken.length == 0) {
+		http.response.setStatus(401);
+		return false;
+	}
+	
+	var userAndToken = headerToken.split(" ");
+	
+	if(userAndToken.length != 2) {
+		http.response.setStatus(401);
+		return false;
+	}
+	
+	var realToken = (CryptoJS.AES.decrypt(userAndToken[1],config.serverKey)).toString(CryptoJS.enc.Utf8);
+	
+	var tokenUserAndTimestampAndProfile = realToken.split("@");
+	
+	
+	// testa se o usuario do token eh igual ao usuario mandado no header e testa se o horario agora já ultrapassou o do permitido pelo token
+	if(tokenUserAndTimestampAndProfile.length != 3 || tokenUserAndTimestampAndProfile[0] != userAndToken[0] || Number(tokenUserAndTimestampAndProfile[1]) < (new Date()).getTime()) {
+		http.response.setStatus(401);
+		return false;
+	}
+	
+	http.response.setStatus(200);
+	return true;
+};
+
+safe.isSessionValid = function (paramsObject, request, response) {
+
+    return true;
+};
+
+safe.hasPermissionInThisModule = function (paramsObject, request, response, moduleName) {
+	
+    return true;
+};
+
+safe.hasPermissionInThisMethod = function (paramsObject, request, response, methodName) {
+	
+	if(request.pathInfo == "/svr/login") {
+		http.response.setStatus(200);
+		return true;
+	}
+	
+	if(!http.requestJava.getHeader("Authorization")) {
+		http.response.setStatus(401);
+		return false;
+	}
+	
+	var headerToken = http.requestJava.getHeader("Authorization").slice(6);
+	
+	var userAndToken = headerToken.split(" ");
+	
+	var realToken = (CryptoJS.AES.decrypt(userAndToken[1],config.serverKey)).toString(CryptoJS.enc.Utf8);
+	
+	var tokenUserAndTimestampAndProfile = realToken.split("@");
+	
+	var profile = tokenUserAndTimestampAndProfile[2];
+	
+	if((methodName == "fechar" || methodName == "inserir" || methodName == "tela") && profile != "admin") {
+		http.response.setStatus(401);
+		return false;
+	}
+	
+    return true;
+};
+
+safe.onError = function (paramsObject, request, response) {
+	response.setContentType("text/html");
+	response.write("<H1>boxJS error: permission denied.</H1>");
+};
+
+print("security.js loaded ......................................................");
+
+~~~
+
+OBS: vale lembrar que no nosso front end enviamos, junto com todas requisições, um header chamado 'Authorization' que possui o tipo de autorização, o nome do usuário e o token de acesso.
+Esse header é usado pelo security para identificar o usuário e para conferir se o token de acesso é válido.
