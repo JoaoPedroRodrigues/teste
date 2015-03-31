@@ -496,9 +496,70 @@ exports = {
 Há uma pequena diferença entre os códigos de cada método e o código que os unifica. Como o acesso a collection a qual o arquivo é referente será feito por praticamente todos os seus métodos
 colocamos esse acesso fora de um método especifico.
 
-// ensinar a programar o svr.js --> adicionando o modulo aes.js
+
+### `svr.js`
+
+Conforme visto durante a criação do `routes.js`, este arquivo conterá apenas um método, o login, que será usado para conferir a senha e o nome do usuário e, caso os dados sejam válidos, criar
+um token de acesso para ele.
+
+A primeira parte do nosso método, será, então, checar se o usuário e senha fornecidos são válidos e isso é feito facilmente, basta checar se há uma entrada no banco com aquela senha 
+e aquele nome de usuário, caso afirmativo, os dados são válidos e o usuário deve receber seu token de acesso.
+
+O token de acesso pode ser feito de qualquer maneira, só é importante que ele seja único para um usuário, não possa ser gerado por algum usuário mal intencionado e seja possível
+que o servidor cheque que aquele token é de um determinado usuário. Para suprir todos estes pré-requisitos, nosso token será a concatenação do nome do usuário, tempo máximo de duração do token
+e o tipo do usuário, tudo isso criptografado utilizando o AES e uma chave que é de conhecimento apenas do servidor.
+
+Para utilizar o AES adicionaremos à pasta modules o arquivo [`aes.js`](http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js), e além de acrescentar ao `config.js` esse novo módulo,
+colocaremos aqui a chave de criptografia que será usada, deixando o nosso `config.js` da seguinte forma:
+
+~~~ javascript
+
+var config = {
+		
+    modules: ["routes", "mongodb", "init", "security","aes"],
+
+    mongodb: {
+        datasource: "java:comp/env/mongo/MongoDSFactory"
+    },
+    
+    serverKey: "security_key"
+
+};
+
+~~~
+
+Com o AES pronto para ser usado basta que codifiquemos o `svr.js` seguindo as ideias anteriormente mencionadas.
+
+~~~ javascript
+
+var colUsuario = db.leilaobox().getCollection("usuarios");
+
+exports = {
+	login: function (params,request,response) {
+		var search = colUsuario.find( { "_id": params.user, "senha": params.pass } );
+		if(search.hasNext()) {
+			var newDateObj = (new Date()).getTime() + 30*60000; // token durara por 30 minutos
+			var token = params.user + "@" + newDateObj + '@' + search.next().tipo;
+			var tokenToSend = (CryptoJS.AES.encrypt(token,config.serverKey)).toString();
+			response.write(JSON.stringify({error: false, accessToken: tokenToSend, userName: params.user, timestamp: newDateObj }));
+			response.setStatus(200);
+			print("-- login done svr.js [finished] --------------------------------------------");
+		}
+		else {
+			print("-- login failed svr.js [finished] --------------------------------------------");
+			response.setStatus(401);
+			response.write(JSON.stringify({error: true, reason: "Senha e/ou password invalido."}));
+		}
+	}
+}
+
+~~~
+
 
 // ensinar a programar o security.js
+
+
+
 
 
 // profit
