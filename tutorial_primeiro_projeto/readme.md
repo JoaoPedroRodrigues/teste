@@ -14,6 +14,13 @@ alguma aplicação, então, para fixar o que foi ensinado sobre o boxJS até o m
 * [Back End com boxJS](#back-end-com-boxjs)
   * [`routes.js`](#routesjs) 
   * [`leilao.js` e `usuario.js`](#leilaojs-e-usuariojs)
+    * [leilao/inserir](#leilaoinserir)
+    * [leilao/buscar](#leilaobuscar)
+    * [leilao/darlance](#leilaodarlance)
+    * [leilao/fechar](#leilaofechar)
+    * [usuario/tela](#usuariotela)
+    * [usuario/inserir](#usuarioinserir)
+    * [usuario/buscar](#usuariobuscar)
   * [`svr.js`](#svrjs)
   * [`security.js`](#securityjs)
 
@@ -26,7 +33,7 @@ alguma aplicação, então, para fixar o que foi ensinado sobre o boxJS até o m
 * [Bootstrap](http://getbootstrap.com/)
 * [AngularJS](https://angularjs.org/)
 
-Apesar dessas ferramentas serem amplamente usadas neste tutorial para desenvolver o front-end, acreditamos que seja póssivel seguí-lo apenas com um 
+Apesar dessas ferramentas serem amplamente usadas neste tutorial para desenvolver o front end, acreditamos que seja póssivel seguí-lo apenas com um 
 conhecimento básico delas.
 
 
