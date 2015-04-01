@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Teste by JoaoPedroRodrigues</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Teste</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/JoaoPedroRodrigues/teste" class="btn">View on GitHub</a>
+      <a href="https://github.com/JoaoPedroRodrigues/teste/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/JoaoPedroRodrigues/teste/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      
+
+<h1>
+<a id="boxjs" class="anchor" href="#boxjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>boxJS</h1>
+
+<p>O boxJS é um container de execução JavaScript para servidores Web, 
+ou seja, é uma plataforma Server-Side JavaScript(SSJS).</p>
+
+<h2>
+<a id="primeiros-passos" class="anchor" href="#primeiros-passos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Primeiros Passos</h2>
+
+<p>Depois de <a href="#configurando-o-ambiente-de-desenvolvimento">configurar o seu ambiente para o funcionamento do boxJS</a>, já podemos criar 
+nosso primeiro arquivo javascript que será executado pelo servidor. Podemos chamá-lo de 'hello.js' e escreveremos apenas o seguinte código nele:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-c1">exports</span> <span class="pl-k">=</span> {
+    <span class="pl-en">world</span>: <span class="pl-k">function</span> (<span class="pl-smi">params</span>,<span class="pl-smi">request</span>,<span class="pl-smi">response</span>) {
+        response.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">"</span>&lt;html&gt;&lt;body&gt; &lt;h1&gt;Hello world!&lt;/h1&gt; &lt;/body&gt;&lt;/html&gt;<span class="pl-pds">"</span></span>);
+    }
+}
+</pre></div>
+
+<p>Agora, já podemos acessar nossa primeira página fornecida via boxJS através da seguinte URL <code>localhost:8080/&lt;nome_do_projeto&gt;/boxjs/hello/world</code>.</p>
+
+<p><img src="browser_com_primeira_pagina.png" alt="Browser"></p>
+
+<h2>
+<a id="precisando-de-ajuda" class="anchor" href="#precisando-de-ajuda" aria-hidden="true"><span class="octicon octicon-link"></span></a>Precisando de Ajuda?</h2>
+
+<p>Envie-nos um <a href="mailto:suporteboxjs@softbox.com.br">e-mail</a></p>
+
+<p>Faça perguntas no Stackoverflow usando a <a href="http://pt.stackoverflow.com/questions/tagged/boxjs">tag boxJS</a></p>
+
+<h2>
+<a id="vantagens" class="anchor" href="#vantagens" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vantagens</h2>
+
+<ul>
+<li>SSJS baseado em threads</li>
+<li>Performático</li>
+<li>Fácil aprendizado</li>
+<li>Simples de usar</li>
+<li>Bom conjunto de APIs para utilização imediata</li>
+</ul>
+
+<h2>
+<a id="sumário" class="anchor" href="#sum%C3%A1rio" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sumário</h2>
+
+<ul>
+<li><a href="#configurando-o-ambiente-de-desenvolvimento">Configurando o ambiente de desenvolvimento</a></li>
+<li><a href="#configurando-o-configjs">Configurando o <code>config.js</code></a></li>
+<li><a href="#configurando-rotas">Configurando rotas</a></li>
+<li><a href="#utilizando-o-securityjs">Utilizando o <code>security.js</code></a></li>
+<li>
+<a href="#mongodb">MongoDB</a>
+
+<ul>
+<li><a href="#preparando-para-usar-o-mongodb">Preparando para usar o MongoDB</a></li>
+<li><a href="#usando-o-mongodb">Usando o MongoDB</a></li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="configurando-o-ambiente-de-desenvolvimento" class="anchor" href="#configurando-o-ambiente-de-desenvolvimento" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configurando o ambiente de desenvolvimento</h2>
+
+<p>Para começarmos a trabalhar com o boxJS precisamos, antes de mais nada, fazer algumas configurações no nosso ambiente de 
+desenvolvimento. Começamos criando um Dynamic Web Project:</p>
+
+<p><img src="tutorial_primeiro_projeto/criando_projeto1.png" alt="Criando projeto"></p>
+
+<p><img src="tutorial_primeiro_projeto/criando_projeto2.png" alt="Criando projeto"></p>
+
+<p>Neste passo é importante checar se o Tomcat esta selecionado e clicar para ir para o próximo, ao invés de finalizar, conforme 
+imagem abaixo:</p>
+
+<p><img src="tutorial_primeiro_projeto/criando_projeto3.png" alt="Configuracao novo projeto"></p>
+
+<p>Nesta tela não há necessidade de modificar nada, apenas siga para a próxima.</p>
+
+<p><img src="tutorial_primeiro_projeto/criando_projeto4.png" alt="Configuracao novo projeto"></p>
+
+<p>Nesta parte é importante marcar a opção de gerar o web.xml automaticamente, conforme imagem abaixo:</p>
+
+<p><img src="tutorial_primeiro_projeto/criando_projeto5.png" alt="Configuracao novo projeto"></p>
+
+<p>Pronto, temos nosso primeiro projeto criado, porém o boxJS ainda não funcionará, precisamos fazer apenas mais uma configuração.</p>
+
+<p>Adicionaremos à pasta <code>lib</code>, que está dentro da pasta <code>WEB-INF</code>, que, por sua vez, está dentro da pasta <code>WebContent</code>, o <a href="https://github.com/JoaoPedroRodrigues/teste/raw/master/boxjs.jar">jar do boxJS</a>,
+do <a href="http://www.java2s.com/Code/Jar/t/Downloadtomcatjdbcjar.htm">Tomcat</a> e da <a href="http://www.java2s.com/Code/Jar/s/Downloadservletapi30jar.htm">api de servlet</a>, conforme imagem abaixo:</p>
+
+<p><img src="tutorial_primeiro_projeto/criando_projeto6.png" alt="Jars na pasta lib"></p>
+
+<p>Feito isso, basta que adicionemos nosso novo projeto ao Tomcat, conforme as imagens abaixo:</p>
+
+<p><img src="tutorial_primeiro_projeto/criando_projeto7.png" alt="Adicionando projeto ao servidor"></p>
+
+<p><img src="tutorial_primeiro_projeto/criando_projeto8.png" alt="Adicionando projeto ao servidor"></p>
+
+<p>É importante lembrar que todos os arquivos <code>.js</code> devem estar dentro da pasta boxjs ou algum subdiretório, conforme a 
+imagem abaixo.</p>
+
+<p><img src="hello_dentro_boxjs.png" alt="Hello World"></p>
+
+<p>Pronto, nosso ambiente já está completamente pronto para funcionar o boxJS!</p>
+
+<h2>
+<a id="configurando-o-configjs" class="anchor" href="#configurando-o-configjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configurando o <code>config.js</code>
+</h2>
+
+<p>Voce pode ter reparado que o servidor encontrou alguns erros ao subir nosso primeiro projeto, isso aconteceu pois
+toda vez que o boxJS é instanciado ele procura pelo arquivo <code>config.js</code> dentro da pasta <code>boxjs</code>, este arquivo
+contém configurações a serem executadas assim que o box é instanciado.</p>
+
+<p>Um exemplo do que é possível fazer com essas configurações é a inclusão de módulos, que devem seguir o seguinte
+padrão.</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-k">var</span> config <span class="pl-k">=</span> {
+    modules<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>routes<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>mongodb<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>io<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>binary<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>jsrender<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>init<span class="pl-pds">"</span></span>]
+};
+</pre></div>
+
+<p>Para alguns módulos, como por exemplo o mongodb, é necessário que se inclua mais algumas configurações. No caso
+do mongo, é necessário citar o link com o banco, o que deve deixar nosso <code>config.js</code> da seguinte forma:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-k">var</span> config <span class="pl-k">=</span> {
+    modules<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>routes<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>mongodb<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>io<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>binary<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>jsrender<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>init<span class="pl-pds">"</span></span>],
+
+    mongodb<span class="pl-k">:</span> {
+        datasource<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>java:comp/env/mongo/MongoDSFactory<span class="pl-pds">"</span></span>
+    }   
+};
+</pre></div>
+
+<p>OBS: Além disso, para utilizarmos o mongo é necessário criar o datasource no context.xml, isso pode ser feito 
+adicionando a seguite tag (com suas devidas alterações) ao context.xml do Tomcat que rodará seu projeto.</p>
+
+<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">Resource</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>mongo/MongoDSFactory<span class="pl-pds">"</span></span> <span class="pl-e">auth</span>=<span class="pl-s"><span class="pl-pds">"</span>Container<span class="pl-pds">"</span></span>
+type=<span class="pl-s"><span class="pl-pds">"</span>com.mongodb.MongoClient<span class="pl-pds">"</span></span> <span class="pl-e">factory</span>=<span class="pl-s"><span class="pl-pds">"</span>softbox.boxjs.MongoDSFactory<span class="pl-pds">"</span></span>
+singleton=<span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span> <span class="pl-e">user</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> <span class="pl-e">pass</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> <span class="pl-e">uri</span>=<span class="pl-s"><span class="pl-pds">"</span>mongodb://localhost:27017/nome_do_banco<span class="pl-pds">"</span></span>/&gt;
+</pre></div>
+
+<h2>
+<a id="configurando-rotas" class="anchor" href="#configurando-rotas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configurando rotas</h2>
+
+<p>Além das páginas html que estão na pasta <code>WebContent</code> que são fornecidas normalmente pelo Tomcat, já sabemos que é possivel
+fornecer páginas através de comandos Javascript desde que os arquivos com estes comandos estejam dentro da pasta <code>boxjs</code>. 
+Outra possibilidade que o boxJS traz é o uso de rotas, essas rotas podem ser definidas no arquivo <code>config.js</code>, do qual <a href="#configurando-o-configjs">já 
+falamos anteriormente</a>, ou em um outro arquivo qualquer, desde que este seja adicionado como 
+módulo no <code>config.js</code>. Consideramos o segundo modo o mais correto e é ele que pode ser encontrado no exemplo abaixo:</p>
+
+<p>Primeiro devemos criar nosso arquivo <code>config.js</code>, nele incluiremos apenas o nosso módulo <code>routes</code>:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-k">var</span> config <span class="pl-k">=</span> {
+    modules<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>routes<span class="pl-pds">"</span></span>]
+};
+</pre></div>
+
+<p><img src="img-config-js-na-pasta.png" alt="Configjs"></p>
+
+<p>Agora podemos criar o arquivo <code>routes.js</code> que irá conter nossas rotas:</p>
+
+<div class="highlight highlight-javascript"><pre>
+Router.<span class="pl-c1">add</span>( <span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>actions/hello<span class="pl-pds">'</span></span>);
+
+Router.<span class="pl-c1">add</span>( <span class="pl-s"><span class="pl-pds">'</span>bye<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>actions/bye<span class="pl-pds">'</span></span>);
+</pre></div>
+
+<p><img src="img-routes-js-na-pasta.png" alt="Routesjs"></p>
+
+<p>Os argumentos da função add, usada acima, são, respectivamente, o Url pattern daquela rota e o arquivo JS que responderá às requisições que
+chegarem nela (o caminho deste arquivo é apartir da pasta <code>boxjs</code>).</p>
+
+<p>No arquivo JavaScript dado como segundo argumento deve ser definido um objeto <code>exports</code> que terá como propriedade o que será suportado
+no restante da URL, cada uma dessas propriedades é na verdade uma função que lida com a requisição do usuário.</p>
+
+<p>Para o nosso exemplo, criamos o <code>hello.js</code> com o seguinte código:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-c1">exports</span> <span class="pl-k">=</span> {
+    <span class="pl-en">modern</span>: <span class="pl-k">function</span> (<span class="pl-smi">params</span>,<span class="pl-smi">request</span>,<span class="pl-smi">response</span>) {
+        response.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">"</span>&lt;html&gt;&lt;body&gt; &lt;h1&gt;Hey route!&lt;/h1&gt; &lt;/body&gt;&lt;/html&gt;<span class="pl-pds">"</span></span>);
+    },
+    <span class="pl-en">std</span>: <span class="pl-k">function</span> (<span class="pl-smi">params</span>,<span class="pl-smi">request</span>,<span class="pl-smi">response</span>) {
+        response.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">"</span>&lt;html&gt;&lt;body&gt; &lt;h1&gt;Hello route!&lt;/h1&gt; &lt;/body&gt;&lt;/html&gt;<span class="pl-pds">"</span></span>);
+    }
+}
+</pre></div>
+
+<p>E o <code>bye.js</code> com:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-c1">exports</span> <span class="pl-k">=</span> {
+    <span class="pl-en">std</span>: <span class="pl-k">function</span> (<span class="pl-smi">params</span>,<span class="pl-smi">request</span>,<span class="pl-smi">response</span>) {
+        response.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">"</span>&lt;html&gt;&lt;body&gt; &lt;h1&gt;Bye route!&lt;/h1&gt; &lt;/body&gt;&lt;/html&gt;<span class="pl-pds">"</span></span>);
+    }
+}
+</pre></div>
+
+<p><img src="img-bye-e-hello-js-na-pasta.png" alt="Byeehello"></p>
+
+<p>Agora podemos acessar cada um desses métodos, respectivamente, com as seguintes URL:</p>
+
+<p><img src="acessando-url-routes.png" alt="UrlRotesBrowser"></p>
+
+<h2>
+<a id="utilizando-o-securityjs" class="anchor" href="#utilizando-o-securityjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilizando o <code>security.js</code>
+</h2>
+
+<p>Caso algum módulo com o nome de <code>security</code> seja adicionado ao <code>config.js</code>, o boxJS garante que todas as requisições, passem, 
+primeiramente, por este módulo, isso possibilita que seja criado algum tipo de restrição de acesso, onde uma certa página só será 
+fornecida pelo servidor caso as restrições impostas pelo módulo <code>security</code> sejam atingidas.</p>
+
+<p>Por padrão o arquivo security vem conforme <a href="https://github.com/cneryjr/boxjs/blob/master/boxjs/modules/security.js">descrito aqui</a>, ou seja, autorizando todo e qualquer acesso, porém 
+tornar alguma página inacessível é uma tarefa simples.</p>
+
+<p>Podemos tornar a página <code>localhost:8080/helloWorld/boxjs/hello/modern</code> inacessível fazendo as seguintes alterações ao <code>security.js</code> padrão:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-c1">safe</span>.<span class="pl-en">hasPermissionInThisMethod</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">paramsObject</span>, <span class="pl-smi">request</span>, <span class="pl-smi">response</span>, <span class="pl-smi">methodName</span>) {
+
+    <span class="pl-k">if</span>(methodName<span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">"</span>modern<span class="pl-pds">"</span></span>) {
+        http.response.setStatus(<span class="pl-c1">403</span>);
+        <span class="pl-k">return</span> <span class="pl-c1">false</span>;
+    }
+
+    <span class="pl-k">return</span> <span class="pl-c1">true</span>;
+};
+
+</pre></div>
+
+<p>Lembramos que o <code>security.js</code> que vai junto com o boxJS é apenas um esboço de um módulo de segurança, quem o utiliza tem liberdade para 
+(e deve) alterar o seu funcionamento.</p>
+
+<p>OBS: Para pegar um header de uma requisição, basta usar o seguinte método <code>http.requestJava.getHeader("nome-do-header")</code>.</p>
+
+<h2>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span class="octicon octicon-link"></span></a>MongoDB</h2>
+
+<h3>
+<a id="preparando-para-usar-o-mongodb" class="anchor" href="#preparando-para-usar-o-mongodb" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparando para usar o MongoDB</h3>
+
+<p>Como citado na parte de <a href="#configurando-o-configjs">como usar o <code>config.js</code></a>, para usarmos o mongoDB o primeiro passo é adicioná-lo aos
+módulos no <code>config.js</code> e citar o link com o banco:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-k">var</span> config <span class="pl-k">=</span> {
+    modules<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>mongodb<span class="pl-pds">"</span></span>],
+
+    mongodb<span class="pl-k">:</span> {
+        datasource<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>java:comp/env/mongo/MongoDSFactory<span class="pl-pds">"</span></span>
+    }
+};
+</pre></div>
+
+<p>Após modificar o <code>config.js</code> para ter estas configurações, devemos adicionar o datasource ao nosso servidor, isso pode ser feito adicionando
+a seguinte tag ao context.xml:</p>
+
+<div class="highlight highlight-xml"><pre>
+&lt;<span class="pl-ent">Resource</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>mongo/MongoDSFactory<span class="pl-pds">"</span></span> <span class="pl-e">auth</span>=<span class="pl-s"><span class="pl-pds">"</span>Container<span class="pl-pds">"</span></span>
+type=<span class="pl-s"><span class="pl-pds">"</span>com.mongodb.MongoClient<span class="pl-pds">"</span></span> <span class="pl-e">factory</span>=<span class="pl-s"><span class="pl-pds">"</span>softbox.boxjs.MongoDSFactory<span class="pl-pds">"</span></span>
+singleton=<span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span> <span class="pl-e">user</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> <span class="pl-e">pass</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> <span class="pl-e">uri</span>=<span class="pl-s"><span class="pl-pds">"</span>mongodb://localhost:27017/nome_do_banco<span class="pl-pds">"</span></span>/&gt;
+</pre></div>
+
+<p><img src="datasource-no-context.png" alt="DatasourceNoContext"></p>
+
+<p>Agora adicione <a href="https://raw.githubusercontent.com/cneryjr/boxjs/master/boxjs/modules/mongodb.js">o módulo do mongo</a> a sua pasta <code>modules</code>.</p>
+
+<p><img src="mongodb-no-modules.png" alt="DatasourceNoContext"></p>
+
+<p>Finalmente, adicione o <a href="https://github.com/mongodb/mongo-java-driver/releases/tag/r2.12.3">jar do driver de conexão ao mongo</a> à pasta <code>lib</code> do <code>WEB-INF</code> e tudo deve funcionar normalmente.</p>
+
+<h3>
+<a id="usando-o-mongodb" class="anchor" href="#usando-o-mongodb" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usando o MongoDB</h3>
+
+<p>Para usar o MongoDB recomendamos a criação de um módulo <code>init.js</code>, com apenas o seguinte código:</p>
+
+<div class="highlight highlight-javascript"><pre>
+db <span class="pl-k">=</span> db <span class="pl-k">||</span> {};
+
+<span class="pl-c1">db</span>.<span class="pl-en">nome_do_banco</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+    <span class="pl-k">return</span> db.MongoDB.getDB(<span class="pl-s"><span class="pl-pds">"</span>nome_do_banco<span class="pl-pds">"</span></span>);
+}
+</pre></div>
+
+<p>Esse módulo init deve ser adicionado ao <code>config.js</code> e é importante para garantir que não serão criadas múltiplas conexões com o banco, com este passo pronto, basta que,
+quando for necessário acessar uma collection, seja utilizado um código semelhante a:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-k">var</span> collection <span class="pl-k">=</span> db.nome_do_banco().getCollection(<span class="pl-s"><span class="pl-pds">"</span>nome_da_collection<span class="pl-pds">"</span></span>);
+</pre></div>
+
+<p>Com uma collection em mãos uma variedade de operações pode ser utilizada:</p>
+
+<ul>
+<li>insert(doc) - insere um documento a uma collection</li>
+<li>find(query,fields) - executa a 'query' na collection retornando apenas os campos determinados em 'fields'</li>
+<li>count(query) - conta quantos documentos são compatíveis com 'query', sem carregá-los</li>
+<li>distinct(field, query) - retorna os valores que um determinado campo, 'field', assume, caso haja uma 'query', só retorna os valores distintos para esta 'query'</li>
+<li>remove(query) - remove as emtradas que são compatíveis com 'query'</li>
+<li>update(query,update,options) - atualiza as entradas que são compatíveis com 'query' para o valor 'update', sendo possível utilizar duas configurações opcionais:
+
+<ul>
+<li>upsert - caso nenhuma entrada seja compatível com 'query', invés de atualizar, insere uma nova entrada</li>
+<li>multi - atualiza todas as entradas compatíveis com 'query'</li>
+</ul>
+</li>
+<li>aggregate - <a href="http://docs.mongodb.org/manual/aggregation/">http://docs.mongodb.org/manual/aggregation/</a>
+</li>
+</ul>
+
+<p>Mais detalhes podem ser vistos no próprio código comentado do módulo do mongo que você adicionou a sua pasta <code>modules</code>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/JoaoPedroRodrigues/teste">Teste</a> is maintained by <a href="https://github.com/JoaoPedroRodrigues">JoaoPedroRodrigues</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
