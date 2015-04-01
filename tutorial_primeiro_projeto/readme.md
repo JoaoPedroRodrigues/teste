@@ -2,7 +2,7 @@
 
 # Tutorial Leilão boxJS
 
-Uma das formas mais comum de nós programadores aprendermos a programar em uma nova linguagem ou um novo framework, é, com certeza, usando-o para desenvolver
+Uma das formas mais comum de nós, programadores, aprendermos a programar em uma nova linguagem ou um novo framework, é, com certeza, usando-o para desenvolver
 alguma aplicação, então, para fixar o que foi ensinado sobre o boxJS até o momento, propomos a construção de uma simples aplicação web de leilões online.
 
 
